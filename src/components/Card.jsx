@@ -15,8 +15,8 @@ const Card = ({
 	email,
 	phone,
 	website,
-	onEditClick,
 	onDeleteClick,
+	onUpdateClick,
 }) => {
 	const [isHeartClicked, setIsHeartClicked] = useState(false);
 
@@ -62,7 +62,7 @@ const Card = ({
 				</button>
 				<button
 					className="border-r border-gray-300 w-full bg-transparent"
-					onClick={onEditClick}
+					onClick={onUpdateClick}
 				>
 					<EditOutlined />
 				</button>
