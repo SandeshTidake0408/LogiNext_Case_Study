@@ -17,7 +17,15 @@ function UpdateDetails({ id, setData, onCancel }) {
 			alert("No user selected for update!");
 			return;
 		}
-		// Update the data in the parent component
+
+		for (let key in newData) {
+			if (newData[key] === "") {
+				alert("All fields are required!");
+				return;
+			}
+		}
+
+		// update in original data object from api
 		setData((prevData) =>
 			prevData.map((user) =>
 				user.id === id ? { ...user, ...newData } : user
@@ -42,7 +50,7 @@ function UpdateDetails({ id, setData, onCancel }) {
 							type="text"
 							name="name"
 							id=""
-							required
+							required={true}
 						/>
 					</div>
 					<div>
@@ -54,7 +62,7 @@ function UpdateDetails({ id, setData, onCancel }) {
 							type="text"
 							name="email"
 							id=""
-							required
+							required={true}
 						/>
 					</div>
 					<div>
@@ -66,7 +74,7 @@ function UpdateDetails({ id, setData, onCancel }) {
 							type="text"
 							name="phone"
 							id=""
-							required
+							required={true}
 						/>
 					</div>
 					<div>
@@ -78,7 +86,7 @@ function UpdateDetails({ id, setData, onCancel }) {
 							type="text"
 							name="website"
 							id=""
-							required
+							required={true}
 						/>
 					</div>
 				</div>
