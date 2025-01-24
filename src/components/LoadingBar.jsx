@@ -9,6 +9,7 @@ const LoadingBar = () => {
 			<div className={styles.rect3}></div>
 			<div className={styles.rect4}></div>
 			<div className={styles.rect5}></div>
+			<p className="mt-5 text-xl text-blue-600">Loading...</p>
 		</div>
 	);
 };

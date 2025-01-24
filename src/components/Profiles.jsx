@@ -15,19 +15,23 @@ const ProfileCard = () => {
 	const [isUpdateModalVisible, setIsUpdateModalVisible] = useState(false);
 	const [selectedUserId, setSelectedUserId] = useState(null);
 
+	const fecthData = async () => {
+		try {
+			const response = await axios.get(
+				"https://jsonplaceholder.typicode.com/users"
+			);
+			setData(response.data);
+			setLoading(false);
+		} catch (error) {
+			console.error("Error fetching data:", error);
+			setLoading(false);
+		}
+	};
+
 	useEffect(() => {
-		axios
-			.get("https://jsonplaceholder.typicode.com/users")
-			.then((response) => {
-				setTimeout(() => {
-					setData(response.data);
-					setLoading(false);
-				}, 2000); // just to show the loading bar
-			})
-			.catch((error) => {
-				console.error("Error fetching data:", error);
-				setLoading(false);
-			});
+		setTimeout(() => {
+			fecthData();
+		}, 2000); // just to show the loading bar
 	}, []);
 
 	// delete handelers
@@ -64,7 +68,7 @@ const ProfileCard = () => {
 					{data.map((user) => (
 						<li key={user.id} className="">
 							<Card
-								image={`https://api.dicebear.com/9.x/avataaars/svg`}
+								image={`https://api.dicebear.com/9.x/avataaars/svg?seed=${user.name}`}
 								name={user.name}
 								email={user.email}
 								phone={user.phone}
